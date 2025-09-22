@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "481930173796",
+    "project_id": "recetasapp-95a3a",
+    "storage_bucket": "recetasapp-95a3a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481930173796:android:c106f265a21eadbd78ee71",
+        "android_client_info": {
+          "package_name": "com.recetas.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpHbghX9wdE7hiXsrpNLXPzIL6twKuAe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
