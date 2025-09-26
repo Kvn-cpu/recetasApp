@@ -1,8 +1,9 @@
 ion-content {
-  --background: #121212;
-  color: #fff;
+  --background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 }
-
+.card {
+  border-radius: 12px;
+}
 ion-item {
   margin-bottom: 12px;
   border-radius: 8px;

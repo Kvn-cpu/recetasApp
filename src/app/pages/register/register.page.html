@@ -1,22 +1,41 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-item>
-    <ion-input [(ngModel)]="email" type="email" placeholder="Correo electrónico"></ion-input>
-  </ion-item>
+<ion-content class="ion-padding d-flex align-items-center justify-content-center">
+  <div class="card shadow p-4 w-100" style="max-width: 400px;">
+    <h4 class="text-center mb-3">Crea tu cuenta 🚀</h4>
 
-  <ion-item>
-    <ion-input [(ngModel)]="password" type="password" placeholder="Contraseña"></ion-input>
-  </ion-item>
+    <ion-item class="mb-3">
+      <ion-input [(ngModel)]="name" type="text" placeholder="Nombre completo"></ion-input>
+    </ion-item>
 
-  <ion-button expand="block" (click)="register()">Registrar</ion-button>
+    <ion-item class="mb-3">
+      <ion-input [(ngModel)]="email" type="email" placeholder="Correo electrónico"></ion-input>
+    </ion-item>
 
-  <!-- 👇 Botón para volver al login -->
-  <ion-button expand="block" fill="clear" color="medium" routerLink="/login">
-    ¿Ya tienes cuenta? Inicia sesión
-  </ion-button>
+    <ion-item class="mb-3">
+      <ion-input [(ngModel)]="confirmEmail" type="email" placeholder="Confirmar correo electrónico"></ion-input>
+    </ion-item>
+
+    <ion-item class="mb-3">
+      <ion-input [(ngModel)]="password" type="password" placeholder="Contraseña"></ion-input>
+    </ion-item>
+
+    <ion-item class="mb-3">
+      <ion-input [(ngModel)]="confirmPassword" type="password" placeholder="Confirmar contraseña"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="register()">Registrarse</ion-button>
+
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      {{ errorMessage }}
+    </div>
+
+    <ion-button expand="block" fill="clear" color="medium" routerLink="/login">
+      ¿Ya tienes cuenta? <b>Inicia sesión</b>
+    </ion-button>
+  </div>
 </ion-content>

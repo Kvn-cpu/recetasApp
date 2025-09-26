@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonInput, IonButton } from '@ionic/angular/standalone';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Router,RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
     IonInput,
     IonButton,
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class LoginPage {
@@ -35,9 +37,9 @@ export class LoginPage {
         this.password
       );
       console.log('✅ Sesión iniciada:', userCredential.user);
-      alert('Login exitoso 🚀');
+      this.router.navigate(['/home']);
     } catch (error: any) {
-      console.error('❌ Error en login:', error.message);
+      console.error(' Error en login:', error.message);
       alert('Error: ' + error.message);
     }
   }
