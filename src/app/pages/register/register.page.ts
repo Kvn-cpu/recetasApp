@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonInput, IonButton } from '@ionic/angular/standalone';
-import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { Auth, createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -19,28 +19,45 @@ import { Router } from '@angular/router';
     IonInput,
     IonButton,
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class RegisterPage {
+  name: string = '';
   email: string = '';
+  confirmEmail: string = '';
   password: string = '';
+  confirmPassword: string = '';
+  errorMessage: string = '';
 
   constructor(private auth: Auth, private router: Router) {}
 
   async register() {
+    if (this.email !== this.confirmEmail) {
+      this.errorMessage = '❌ Los correos no coinciden';
+      return;
+    }
+    if (this.password !== this.confirmPassword) {
+      this.errorMessage = '❌ Las contraseñas no coinciden';
+      return;
+    }
+
     try {
       const userCredential = await createUserWithEmailAndPassword(
         this.auth,
         this.email,
         this.password
       );
+
+      // Guardamos el nombre en el perfil de Firebase
+      await updateProfile(userCredential.user, { displayName: this.name });
+
       console.log('✅ Usuario registrado:', userCredential.user);
-      alert('Registro exitoso 🎉');
-      this.router.navigate(['/login']); // 👈 Redirigir al login después de registrar
+      this.router.navigate(['/login']);
     } catch (error: any) {
       console.error('❌ Error en registro:', error.message);
-      alert('Error: ' + error.message);
+      this.errorMessage = error.message;
     }
   }
 }
