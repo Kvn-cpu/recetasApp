@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Iniciar Sesión</ion-title>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding d-flex align-items-center justify-content-center">
   <div class="card shadow p-4 w-100" style="max-width: 400px;">
-    <h4 class="text-center mb-3">Bienvenido de nuevo 👋</h4>
+    <h4 class="text-center mb-3">Bienvenido 👋</h4>
 
     <ion-item class="mb-3">
       <ion-input [(ngModel)]="email" type="email" placeholder="Correo electrónico"></ion-input>
@@ -16,7 +16,7 @@
       <ion-input [(ngModel)]="password" type="password" placeholder="Contraseña"></ion-input>
     </ion-item>
 
-    <ion-button expand="block" (click)="login()">Iniciar sesión</ion-button >
+    <ion-button expand="block" (click)="login()">Iniciar sesión</ion-button>
 
     <ion-button expand="block" fill="clear" color="medium" routerLink="/register">
       ¿No tienes cuenta? <b>Regístrate</b>

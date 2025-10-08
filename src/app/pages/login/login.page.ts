@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonInput, IonButton } from '@ionic/angular/standalone';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { Router,RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +27,7 @@ export class LoginPage {
   email: string = '';
   password: string = '';
 
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth, private router: Router) {}
 
   async login() {
     try {

@@ -1,9 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>🍽️ Recetas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h2>Bienvenido 🎉</h2>
+
+  <ion-list>
+    <ion-item *ngFor="let receta of recetas$ | async">
+      <ion-label>
+        <h2>{{ receta.titulo }}</h2>
+        <p><strong>Ingredientes:</strong> {{ receta.ingredientes }}</p>
+        <p><strong>Tiempo:</strong> {{ receta.tiempo }}</p>
+        <p>{{ receta.descripcion }}</p>
+      </ion-label>
+      <img [src]="receta.imagen" alt="imagen de receta"
+           style="width:80px; height:80px; border-radius:8px; margin-left:10px;">
+    </ion-item>
+  </ion-list>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title size="small">© 2025 RecetasApp</ion-title>
+  </ion-toolbar>
+</ion-footer>
