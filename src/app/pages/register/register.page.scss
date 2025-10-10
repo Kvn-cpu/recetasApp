@@ -1,21 +1,122 @@
-ion-content {
-  --background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+.register-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
 }
-.card {
-  border-radius: 12px;
+
+/* Fondo degradado animado azul a morado */
+.register-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1b1d9a, #8e24aa);
+  background-size: 200% 200%;
+  animation: moveGradient 10s ease infinite;
+  filter: blur(60px);
+  opacity: 0.9;
+  z-index: 0;
 }
-ion-item {
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Contenedor del formulario */
+.register-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 28px;
+  padding: 2rem;
+  width: 85%;
+  max-width: 400px;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Logo */
+.logo {
+  width: 130px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  margin-top: -0.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Títulos */
+.title {
+  font-weight: 700;
+  color: #4a148c;
+  margin-bottom: 0.25rem;
+  font-size: 1.4rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* Inputs */
+.input-item {
   margin-bottom: 12px;
-  border-radius: 8px;
-  --background: #1e1e1e;
+  border-radius: 10px;
+  --background: #f7f7f7;
+  --padding-start: 10px;
+  width: 100%;
 }
 
-ion-input {
-  color: #fff;
-}
-
+/* Botón */
 ion-button {
-  margin-top: 20px;
-  --background: #4caf50;
-  --border-radius: 12px;
+  --background: #6a1b9a;
+  margin-top: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(106, 27, 154, 0.4);
+}
+
+/* Errores */
+.error-message {
+  margin-top: 1rem;
+  color: #d32f2f;
+  font-size: 0.9rem;
+}
+
+/* Enlace de inicio de sesión */
+.switch-text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.switch-text a {
+  color: #6a1b9a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.switch-text a:hover {
+  text-decoration: underline;
 }

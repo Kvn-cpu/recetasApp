@@ -1,41 +1,45 @@
-<ion-header>
-  <ion-toolbar color="secondary">
-    <ion-title>Registro</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="register-content">
+  <div class="register-container">
+    <!-- Logo -->
+    <img src="assets/logo.png" alt="Logo" class="logo" />
 
-<ion-content class="ion-padding d-flex align-items-center justify-content-center">
-  <div class="card shadow p-4 w-100" style="max-width: 400px;">
-    <h4 class="text-center mb-3">Crea tu cuenta 🚀</h4>
+    <!-- Título -->
+    <h2 class="title">Crear cuenta 🚀</h2>
+    <p class="subtitle">Regístrate para descubrir nuevas recetas</p>
 
-    <ion-item class="mb-3">
+    <!-- Campos -->
+    <ion-item class="input-item">
       <ion-input [(ngModel)]="name" type="text" placeholder="Nombre completo"></ion-input>
     </ion-item>
 
-    <ion-item class="mb-3">
+    <ion-item class="input-item">
       <ion-input [(ngModel)]="email" type="email" placeholder="Correo electrónico"></ion-input>
     </ion-item>
 
-    <ion-item class="mb-3">
+    <ion-item class="input-item">
       <ion-input [(ngModel)]="confirmEmail" type="email" placeholder="Confirmar correo"></ion-input>
     </ion-item>
 
-    <ion-item class="mb-3">
+    <ion-item class="input-item">
       <ion-input [(ngModel)]="password" type="password" placeholder="Contraseña"></ion-input>
     </ion-item>
 
-    <ion-item class="mb-3">
+    <ion-item class="input-item">
       <ion-input [(ngModel)]="confirmPassword" type="password" placeholder="Confirmar contraseña"></ion-input>
     </ion-item>
 
-    <ion-button expand="block" (click)="register()">Registrarse</ion-button>
-
-    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-      {{ errorMessage }}
-    </div>
-
-    <ion-button expand="block" fill="clear" color="medium" routerLink="/login">
-      ¿Ya tienes cuenta? <b>Inicia sesión</b>
+    <!-- Botón -->
+    <ion-button expand="block" shape="round" (click)="register()">
+      Registrarse
     </ion-button>
+
+    <!-- Mensaje de error -->
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+    <!-- Enlace de regreso -->
+    <p class="switch-text">
+      ¿Ya tienes una cuenta?
+      <a routerLink="/login"><b>Inicia sesión</b></a>
+    </p>
   </div>
 </ion-content>

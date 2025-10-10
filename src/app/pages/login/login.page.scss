@@ -1,25 +1,110 @@
-ion-content {
-  --background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-.card {
-  border-radius: 12px;
+.auth-content {
+  --background: linear-gradient(135deg, #1b1d9a 0%, #8e24aa 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh; /* Ocupar toda la pantalla */
+  overflow: hidden;
 }
 
-ion-item {
+/* Tarjeta blanca centrada */
+.auth-container {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 28px;
+  padding: 2rem;
+  width: 85%;
+  max-width: 400px;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  top: 0;
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+}
+
+/* --- Logo --- */
+.logo {
+  width: 130px; /* un poco más grande para móviles */
+  height: auto;
+  margin-bottom: 1.5rem;
+  margin-top: -0.5rem; /* lo sube visualmente */
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* --- Títulos --- */
+.title {
+  font-weight: 700;
+  color: #4a148c;
+  margin-bottom: 0.25rem;
+  font-size: 1.4rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Inputs --- */
+.input-item {
   margin-bottom: 12px;
-  border-radius: 8px;
-  --background: #1e1e1e;
+  border-radius: 10px;
+  --background: #f7f7f7;
+  --padding-start: 10px;
+  width: 100%;
 }
 
-ion-input {
-  color: #fff;
-}
-
+/* --- Botón principal --- */
 ion-button {
-  margin-top: 20px;
-  --background: #2196f3;
-  --border-radius: 12px;
+  --background: #6a1b9a;
+  margin-top: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(106, 27, 154, 0.4);
 }
 
+/* --- Enlaces inferiores --- */
+.forgot {
+  margin-top: 1rem;
+  color: #1b1d9a;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
+.forgot:hover {
+  text-decoration: underline;
+}
 
+.switch-text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.switch-text a {
+  color: #6a1b9a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Ajustes de proporción vertical según pantalla */
+@media (min-height: 800px) {
+  .auth-container {
+    min-height: 55vh;
+  }
+}
+
+@media (min-height: 1000px) {
+  .auth-container {
+    min-height: 45vh;
+  }
+}

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonInput, IonButton } from '@ionic/angular/standalone';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router, RouterModule } from '@angular/router';
-
+import { sendPasswordResetEmail } from '@angular/fire/auth';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -40,6 +40,20 @@ export class LoginPage {
       this.router.navigate(['/home']);
     } catch (error: any) {
       console.error(' Error en login:', error.message);
+      alert('Error: ' + error.message);
+    }
+  }
+  async recoverPassword() {
+    if (!this.email) {
+      alert('Por favor ingresa tu correo electrónico');
+      return;
+    }
+  
+    try {
+      await sendPasswordResetEmail(this.auth, this.email);
+      alert('Se ha enviado un correo para restablecer tu contraseña.');
+    } catch (error: any) {
+      console.error('Error al enviar correo:', error.message);
       alert('Error: ' + error.message);
     }
   }

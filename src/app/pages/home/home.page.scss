@@ -1,20 +1,77 @@
-h2 {
-  margin: 16px 0;
-  font-weight: bold;
+.home-content {
+  --background: linear-gradient(135deg, #1b1d9a 0%, #8e24aa 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  overflow-y: auto;
 }
 
-ion-card {
-  margin-bottom: 16px;
-  img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-  }
+/* 🔍 Barra de búsqueda */
+.search-bar {
+  width: 90%;
+  margin: 1rem auto;
 }
+
+ion-searchbar {
+  --background: #fff;
+  --border-radius: 50px;
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  --color: #4a148c;
+  --placeholder-color: #888;
+  --icon-color: #6a1b9a;
+}
+
+/* 🍽️ Contenedor de recetas */
+.recipes-container {
+  width: 90%;
+  margin-bottom: 80px; /* espacio para el navbar */
+}
+
+.recipe-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+ion-card-header {
+  padding: 0.5rem 1rem;
+  color: #4a148c;
+  font-weight: 700;
+}
+
 ion-card-content {
-  padding: 12px;
-  h3 {
-    margin: 0;
-    font-size: 1.2em;
-  }
+  font-size: 0.9rem;
+  color: #444;
+  text-align: left;
+}
+
+/* 🧭 Navbar inferior */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 20px 0 0;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+ion-button {
+  --color: #6a1b9a;
+  font-size: 1.6rem;
 }

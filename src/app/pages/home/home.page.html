@@ -1,28 +1,44 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>🍽️ Recetas</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="home-content">
+  <!-- 🔍 Buscador superior -->
+  <div class="search-bar">
+    <ion-searchbar
+      placeholder="Busca tu plato"
+      show-clear-button="focus"
+      animated="true"
+      (ionInput)="onSearchChange($event)"
+    ></ion-searchbar>
+  </div>
+  
 
-<ion-content class="ion-padding">
-
-  <ion-list>
-    <ion-item *ngFor="let receta of recetas$ | async">
-      <ion-label>
-        <h2>{{ receta.titulo }}</h2>
-        <p><strong>Ingredientes:</strong> {{ receta.ingredientes }}</p>
-        <p><strong>Tiempo:</strong> {{ receta.tiempo }}</p>
+  <!-- 🍽️ Listado de recetas -->
+  <div class="recipes-container">
+    <ion-card *ngFor="let receta of recetas$ | async" class="recipe-card">
+      <img [src]="receta.imagen" alt="imagen de receta" />
+      <ion-card-header>
+        <ion-card-title>{{ receta.titulo }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>🕒 Tiempo:</strong> {{ receta.tiempo }}</p>
+        <p><strong>🥣 Ingredientes:</strong> {{ receta.ingredientes }}</p>
         <p>{{ receta.descripcion }}</p>
-      </ion-label>
-      <img [src]="receta.imagen" alt="imagen de receta"
-           style="width:80px; height:80px; border-radius:8px; margin-left:10px;">
-    </ion-item>
-  </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
+  <!-- 🧭 Navbar inferior -->
+  <ion-footer class="bottom-nav">
+    <ion-toolbar>
+      <div class="nav-buttons">
+        <ion-button fill="clear" routerLink="/home">
+          <ion-icon name="home-outline"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" routerLink="/mis-recetas">
+          <ion-icon name="book-outline"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" routerLink="/profile">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-title size="small">© 2025 RecetasApp</ion-title>
-  </ion-toolbar>
-</ion-footer>
