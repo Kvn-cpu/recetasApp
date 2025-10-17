@@ -1,0 +1,49 @@
+.detalle-content {
+    --background: linear-gradient(135deg, #1b1d9a 0%, #8e24aa 100%);
+    padding-bottom: 3rem;
+  }
+  
+  ion-card {
+    margin: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.96);
+  }
+  
+  .receta-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  ion-card-title {
+    font-weight: 700;
+    color: #4a148c;
+    font-size: 1.4rem;
+  }
+  
+  .tiempo {
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 0.3rem;
+  }
+  
+  ion-card-content h3 {
+    color: #6a1b9a;
+    margin-top: 1.2rem;
+    font-weight: 600;
+  }
+  
+  ion-card-content ol {
+    text-align: left;
+    padding-left: 1.5rem;
+    color: #333;
+  }
+  
+  ion-button {
+    --background: #6a1b9a;
+    --border-radius: 12px;
+    font-weight: 600;
+  }
+  

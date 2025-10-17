@@ -75,3 +75,45 @@ ion-button {
   --color: #6a1b9a;
   font-size: 1.6rem;
 }
+.sin-resultados {
+  text-align: center;
+  color: #fff;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.9;
+
+  ion-icon {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+}
+/* 🍳 Animación suave al aparecer recetas */
+.recipe-card {
+  animation: fadeIn 0.5s ease-in-out;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* 🔆 Keyframes para la entrada suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HomePage } from './home.page';
+import { RecetaDetallePage } from './receta-detalle.page';
 
-describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+describe('RecetaDetallePage', () => {
+  let component: RecetaDetallePage;
+  let fixture: ComponentFixture<RecetaDetallePage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomePage);
+    fixture = TestBed.createComponent(RecetaDetallePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -14,5 +14,4 @@ describe('HomePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

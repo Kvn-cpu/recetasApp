@@ -1,0 +1,39 @@
+<ion-header translucent>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ receta?.titulo }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="detalle-content">
+  <ion-card *ngIf="receta">
+    <img [src]="receta.imagen" alt="Imagen de receta" class="receta-img" />
+    <ion-card-header>
+      <ion-card-title>{{ receta.titulo }}</ion-card-title>
+      <p class="tiempo">⏱ {{ receta.tiempo }}</p>
+    </ion-card-header>
+
+    <ion-card-content>
+      <h3>🥣 Ingredientes</h3>
+      <p>{{ receta.ingredientes }}</p>
+
+      <h3>👨‍🍳 Pasos</h3>
+      <ol>
+        <li *ngFor="let paso of pasos">{{ paso }}</li>
+      </ol>
+
+      <h3 *ngIf="receta.videoUrl">🎥 Video</h3>
+      <ion-button
+        *ngIf="receta.videoUrl"
+        expand="block"
+        fill="solid"
+        color="primary"
+        (click)="abrirVideo(receta.videoUrl)"
+      >
+        Ver en YouTube
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
