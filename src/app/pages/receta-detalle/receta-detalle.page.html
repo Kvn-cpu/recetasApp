@@ -1,39 +1,48 @@
-<ion-header translucent>
-  <ion-toolbar color="light">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ receta?.titulo }}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="detalle-content">
-  <ion-card *ngIf="receta">
-    <img [src]="receta.imagen" alt="Imagen de receta" class="receta-img" />
-    <ion-card-header>
-      <ion-card-title>{{ receta.titulo }}</ion-card-title>
-      <p class="tiempo">⏱ {{ receta.tiempo }}</p>
-    </ion-card-header>
+  <div class="detalle-container">
+    <!-- 🖼️ Imagen principal con botón de reproducción -->
+    <div class="imagen-container">
+      <img [src]="receta?.imagen" alt="{{ receta?.titulo }}" class="detalle-imagen" />
 
-    <ion-card-content>
-      <h3>🥣 Ingredientes</h3>
-      <p>{{ receta.ingredientes }}</p>
-
-      <h3>👨‍🍳 Pasos</h3>
-      <ol>
-        <li *ngFor="let paso of pasos">{{ paso }}</li>
-      </ol>
-
-      <h3 *ngIf="receta.videoUrl">🎥 Video</h3>
-      <ion-button
-        *ngIf="receta.videoUrl"
-        expand="block"
-        fill="solid"
-        color="primary"
-        (click)="abrirVideo(receta.videoUrl)"
+      <!-- Botón flotante para ver el video -->
+      <button
+        *ngIf="receta?.videoUrl && !mostrarVideo"
+        class="play-button"
+        (click)="mostrarVideo = true"
       >
-        Ver en YouTube
-      </ion-button>
-    </ion-card-content>
-  </ion-card>
+        ▶️
+      </button>
+    </div>
+
+    <!-- 🎥 Video visible solo al presionar el botón -->
+    <div *ngIf="mostrarVideo" class="video-container">
+      <iframe
+    [attr.src]="receta?.videoUrl"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+></iframe>
+
+    </div>
+
+    <!-- 🍽️ Título -->
+    <h2 class="detalle-titulo">{{ receta?.titulo }}</h2>
+    <p class="detalle-descripcion">{{ receta?.descripcion }}</p>
+
+    <!-- 🧂 Ingredientes -->
+    <div class="detalle-seccion">
+      <h3>🥣 Ingredientes</h3>
+      <ul>
+        <li *ngFor="let ingrediente of receta?.ingredientes">{{ ingrediente }}</li>
+      </ul>
+    </div>
+
+    <!-- 🔪 Pasos -->
+    <div class="detalle-seccion">
+      <h3>👨‍🍳 Paso a paso</h3>
+      <ol>
+        <li *ngFor="let paso of receta?.pasos">{{ paso }}</li>
+      </ol>
+    </div>
+  </div>
 </ion-content>
