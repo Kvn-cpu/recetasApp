@@ -18,12 +18,14 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 interface Receta {
-  id: string; // 👈 ahora obligatorio para evitar undefined
+  id: string;
   titulo: string;
   descripcion: string;
-  ingredientes: string;
-  tiempo: string;
+  ingredientes: string[] | string;
+  tiempo: number | string;
   imagen: string;
+  pasos?: string[];
+  videoUrl?: string;
 }
 
 @Component({
@@ -62,15 +64,15 @@ export class HomePage implements OnInit {
       });
   }
 
-  /** 🔍 Normaliza texto: quita tildes y pasa a minúsculas */
+  /** 🔠 Normaliza texto: elimina tildes y pasa a minúsculas */
   private normalizarTexto(texto: string): string {
     return texto
       .toLowerCase()
       .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, ''); // elimina acentos
+      .replace(/[\u0300-\u036f]/g, '');
   }
 
-  /** 🔎 Filtra recetas según el texto ingresado */
+  /** 🔎 Filtra recetas según el texto ingresado en el buscador */
   onSearchChange(event: any) {
     const termino = this.normalizarTexto(event.detail.value || '');
 
@@ -81,8 +83,24 @@ export class HomePage implements OnInit {
 
     const recetasFiltradas = this.todasRecetas.filter((r) => {
       const titulo = this.normalizarTexto(r.titulo);
-      const ingredientes = this.normalizarTexto(r.ingredientes);
-      return titulo.includes(termino) || ingredientes.includes(termino);
+
+      // 🔹 Convierte ingredientes a texto (array o string)
+      const ingredientesTexto = Array.isArray(r.ingredientes)
+        ? r.ingredientes.join(' ')
+        : r.ingredientes;
+      const ingredientes = this.normalizarTexto(ingredientesTexto);
+
+      // 🔹 Normaliza descripción y pasos (si existen)
+      const descripcion = this.normalizarTexto(r.descripcion || '');
+      const pasos = this.normalizarTexto(r.pasos?.join(' ') || '');
+
+      // ✅ Busca coincidencias en varios campos
+      return (
+        titulo.includes(termino) ||
+        ingredientes.includes(termino) ||
+        descripcion.includes(termino) ||
+        pasos.includes(termino)
+      );
     });
 
     this.recetasSource.next(recetasFiltradas);
@@ -90,7 +108,7 @@ export class HomePage implements OnInit {
 
   /** 📄 Abre el detalle de la receta seleccionada */
   abrirDetalle(id?: string) {
-    if (!id) return; // 👈 evita error si algún id llega vacío
+    if (!id) return;
     this.router.navigate(['/receta', id]);
   }
 }

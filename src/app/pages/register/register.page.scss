@@ -7,6 +7,8 @@
   text-align: center;
   height: 100vh;
   overflow: hidden;
+  --background: transparent !important;
+  background: transparent !important;
 }
 
 /* Fondo degradado animado azul a morado */
@@ -20,8 +22,7 @@
   background: linear-gradient(135deg, #1b1d9a, #8e24aa);
   background-size: 200% 200%;
   animation: moveGradient 10s ease infinite;
-  filter: blur(60px);
-  opacity: 0.9;
+  opacity: 1;           /* antes 0.9 */
   z-index: 0;
 }
 
