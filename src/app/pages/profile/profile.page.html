@@ -1,13 +1,56 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="perfil-content">
+  <div class="perfil-container">
+    <!-- Botón Back -->
+    <button class="back-btn" (click)="goBack()">← Back</button>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- Foto de perfil -->
+    <img
+      [src]="user.photoURL || 'assets/default-profile.png'"
+      alt="Foto de perfil"
+      class="profile-photo"
+    />
+
+    <!-- Datos del usuario -->
+    <div class="user-info">
+      <ion-input
+        [(ngModel)]="user.displayName"
+        [readonly]="!editMode"
+        class="input-field"
+        placeholder="Nombre de usuario"
+      ></ion-input>
+
+      <p class="email">{{ user.email }}</p>
+    </div>
+
+    <!-- Botones -->
+    <div class="buttons">
+      <ion-button expand="block" (click)="toggleEditMode()">
+        {{ editMode ? 'Cancelar' : 'Editar Perfil' }}
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        color="primary"
+        *ngIf="editMode"
+        (click)="saveChanges()"
+      >
+        Guardar Cambios
+      </ion-button>
+
+      <ion-button expand="block" color="warning">
+        Cambiar Contraseña
+      </ion-button>
+
+      <ion-button expand="block" color="danger" (click)="logout()">
+        Cerrar Sesión
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- Barra inferior -->
+  <nav class="bottom-nav">
+    <button (click)="router.navigate(['/home'])">🏠 Home</button>
+    <button (click)="router.navigate(['/library'])">📚 Biblioteca</button>
+    <button (click)="router.navigate(['/profile'])">👤 Perfil</button>
+  </nav>
 </ion-content>

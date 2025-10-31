@@ -31,6 +31,13 @@ export const routes: Routes = [
     
     
     
+  },
+  
+  {
+    path: 'library',
+    loadComponent: () => import('./pages/library/library.page').then( m => m.LibraryPage)
   }
+
+
 
 ];

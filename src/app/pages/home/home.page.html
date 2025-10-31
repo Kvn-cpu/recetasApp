@@ -1,5 +1,5 @@
 <ion-content class="home-content">
-  <!-- 🔍 Buscador superior -->
+  <!-- 🔍 Buscador -->
   <div class="search-bar">
     <ion-searchbar
       placeholder="Busca tu plato"
@@ -11,7 +11,6 @@
 
   <!-- 🍽️ Listado de recetas -->
   <div class="recipes-container">
-    <!-- ✅ Mostrar recetas si existen -->
     <ng-container *ngIf="(recetas$ | async)?.length; else sinResultados">
       <ion-card
         *ngFor="let receta of recetas$ | async"
@@ -30,7 +29,7 @@
       </ion-card>
     </ng-container>
 
-    <!-- ⚠️ Mensaje cuando no hay resultados -->
+    <!-- ⚠️ Sin resultados -->
     <ng-template #sinResultados>
       <div class="sin-resultados">
         <ion-icon name="search-outline"></ion-icon>
@@ -39,21 +38,10 @@
     </ng-template>
   </div>
 
-  <!-- 🧭 Navbar inferior -->
-  <ion-footer class="bottom-nav">
-    <ion-toolbar>
-      <div class="nav-buttons">
-        <ion-button fill="clear" routerLink="/home">
-          <ion-icon name="home-outline"></ion-icon>
-        </ion-button>
-        <ion-button fill="clear" routerLink="/mis-recetas">
-          <ion-icon name="book-outline"></ion-icon>
-        </ion-button>
-        <ion-button fill="clear" routerLink="/profile">
-          <ion-icon name="person-circle-outline"></ion-icon>
-        </ion-button>
-      </div>
-    </ion-toolbar>
-  </ion-footer>
+  <!-- ✅ Navbar unificado -->
+  <nav class="bottom-nav">
+    <button (click)="router.navigate(['/home'])">🏠 Home</button>
+    <button (click)="router.navigate(['/library'])">📚 Biblioteca</button>
+    <button (click)="router.navigate(['/profile'])">👤 Perfil</button>
+  </nav>
 </ion-content>
-

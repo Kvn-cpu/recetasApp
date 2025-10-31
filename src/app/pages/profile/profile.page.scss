@@ -1,0 +1,106 @@
+.perfil-content {
+    --background: linear-gradient(135deg, #1b1d9a 0%, #8e24aa 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    position: relative;
+    margin-bottom: 5rem; 
+  }
+  
+  /* Contenedor principal */
+  .perfil-container {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 25px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1;
+    position: relative;
+  }
+  
+  /* Botón atrás */
+  .back-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: transparent;
+    border: none;
+    color: #6a1b9a;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  /* Foto de perfil */
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 1.5rem auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Datos de usuario */
+  .user-info {
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-field {
+    margin-bottom: 0.75rem;
+    --background: #f7f7f7;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .email {
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  /* Botones */
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  
+  ion-button {
+    --border-radius: 12px;
+    --background: #6a1b9a;
+    font-weight: 600;
+  }
+  
+  /* Barra inferior */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  
+  .bottom-nav button {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #6a1b9a;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .bottom-nav button:hover {
+    transform: scale(1.1);
+  }
+  

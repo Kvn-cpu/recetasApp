@@ -15,7 +15,7 @@ import {
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 interface Receta {
   id: string;
@@ -44,7 +44,7 @@ interface Receta {
     IonFooter,
     IonToolbar,
     IonButton,
-    IonIcon,
+    IonIcon, RouterModule
   ],
 })
 export class HomePage implements OnInit {
@@ -52,7 +52,7 @@ export class HomePage implements OnInit {
   recetas$ = this.recetasSource.asObservable();
   private todasRecetas: Receta[] = [];
 
-  constructor(private firestore: Firestore, private router: Router) {}
+  constructor(private firestore: Firestore, public router: Router) {}
 
   ngOnInit() {
     const recetasRef = collection(this.firestore, 'recetas');
