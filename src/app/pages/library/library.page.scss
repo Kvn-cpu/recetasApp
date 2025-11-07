@@ -1,0 +1,29 @@
+.library-content {
+    --background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .library-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  
+  .library-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .library-card {
+    margin-bottom: 16px;
+  }
+  
+  .no-favoritos {
+    text-align: center;
+    color: gray;
+    margin-top: 30px;
+  }
+  

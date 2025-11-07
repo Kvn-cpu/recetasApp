@@ -1,10 +1,10 @@
 <ion-content class="detalle-content">
   <div class="detalle-container">
-    <!-- 🖼️ Imagen principal con botón de reproducción -->
+    <!-- 🖼️ Imagen principal -->
     <div class="imagen-container">
       <img [src]="receta?.imagen" alt="{{ receta?.titulo }}" class="detalle-imagen" />
 
-      <!-- Botón flotante para ver el video -->
+      <!-- ▶️ Botón flotante para ver video -->
       <button
         *ngIf="receta?.videoUrl && !mostrarVideo"
         class="play-button"
@@ -14,20 +14,28 @@
       </button>
     </div>
 
-    <!-- 🎥 Video visible solo al presionar el botón -->
+    <!-- 🎥 Video -->
     <div *ngIf="mostrarVideo" class="video-container">
       <iframe
-      [src]="videoSeguro"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-></iframe>
-
+        [src]="videoSeguro"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
 
     <!-- 🍽️ Título -->
     <h2 class="detalle-titulo">{{ receta?.titulo }}</h2>
     <p class="detalle-descripcion">{{ receta?.descripcion }}</p>
+
+    <!-- ❤️ Botón de favoritos -->
+    <ion-button expand="block" class="favorito-btn" (click)="toggleFavorito()">
+      <ion-icon
+        [name]="esFavorito ? 'heart' : 'heart-outline'"
+        slot="start"
+      ></ion-icon>
+      {{ esFavorito ? 'Quitar de biblioteca' : 'Agregar a biblioteca' }}
+    </ion-button>
 
     <!-- 🧂 Ingredientes -->
     <div class="detalle-seccion">

@@ -1,93 +1,63 @@
 .detalle-content {
-    --background: linear-gradient(135deg, #1b1d9a 0%, #8e24aa 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .detalle-container {
-    background: rgba(255, 255, 255, 0.97);
-    border-radius: 25px;
-    padding: 2rem;
-    width: 90%;
-    max-width: 420px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    margin: 2rem auto;
-    text-align: center;
-  }
-  
-  .imagen-container {
-    position: relative;
-    width: 100%;
-  }
-  
-  .detalle-imagen {
-    width: 100%;
-    height: 220px;
-    border-radius: 15px;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* ▶️ Botón flotante sobre la imagen */
-  .play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.85);
-    border: none;
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    font-size: 30px;
-    color: #6a1b9a;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .play-button:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-    background: #fff;
-  }
-  
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-    margin-bottom: 1rem;
-  }
-  
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    border-radius: 15px;
-  }
-  
-  .detalle-titulo {
-    font-weight: 700;
-    color: #4a148c;
-    margin-bottom: 0.5rem;
-  }
-  
-  .detalle-descripcion {
-    color: #555;
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .detalle-seccion h3 {
-    color: #6a1b9a;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-  
+  --background: linear-gradient(135deg, #1b1d9a 0%, #8e24aa 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detalle-container {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 25px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.favorito-btn {
+  --background: #6a1b9a;
+  --border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.favorito-btn ion-icon {
+  font-size: 1.2rem;
+}
+
+.imagen-container {
+  position: relative;
+}
+
+.detalle-imagen {
+  width: 100%;
+  height: 220px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* ▶️ Botón flotante */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 30px;
+  color: #6a1b9a;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-in-out;
+}
+
+.play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: #fff;
+}

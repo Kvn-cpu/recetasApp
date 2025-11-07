@@ -1,13 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>library</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="detalle-content">
+  <div class="detalle-container">
+    <h2 class="detalle-titulo">📚 Mis Recetas Favoritas</h2>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">library</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div *ngIf="favoritos.length > 0; else noFavoritos">
+      <div *ngFor="let receta of favoritos" class="receta-item">
+        <div class="imagen-container">
+          <img [src]="receta.imagen" alt="{{ receta.titulo }}" class="detalle-imagen" />
+        </div>
+
+        <h3 class="detalle-titulo">{{ receta.titulo }}</h3>
+        <p class="detalle-descripcion">{{ receta.descripcion }}</p>
+
+        <div class="detalle-seccion botones-favoritos">
+          <ion-button expand="block" (click)="verDetalle(receta)">Ver Detalle</ion-button>
+          <ion-button color="danger" expand="block" (click)="eliminarFavorito(receta.id)">
+            Eliminar
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noFavoritos>
+      <p class="detalle-descripcion">Aún no tienes recetas en tu biblioteca 😢</p>
+    </ng-template>
+  </div>
 </ion-content>
