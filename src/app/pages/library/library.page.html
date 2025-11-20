@@ -1,27 +1,45 @@
-<ion-content class="detalle-content">
-  <div class="detalle-container">
-    <h2 class="detalle-titulo">📚 Mis Recetas Favoritas</h2>
 
-    <div *ngIf="favoritos.length > 0; else noFavoritos">
-      <div *ngFor="let receta of favoritos" class="receta-item">
-        <div class="imagen-container">
-          <img [src]="receta.imagen" alt="{{ receta.titulo }}" class="detalle-imagen" />
-        </div>
 
-        <h3 class="detalle-titulo">{{ receta.titulo }}</h3>
-        <p class="detalle-descripcion">{{ receta.descripcion }}</p>
+<ion-content class="library-content">
+  <!-- 🔍 Buscador -->
+  <div class="search-bar">
+    <ion-searchbar
+      placeholder="Busca en tu biblioteca"
+      show-clear-button="focus"
+      animated="true"
+      (ionInput)="onSearchChange($event)"
+    ></ion-searchbar>
+  </div>
 
-        <div class="detalle-seccion botones-favoritos">
-          <ion-button expand="block" (click)="verDetalle(receta)">Ver Detalle</ion-button>
+  <div class="lista-container">
+    <ng-container *ngIf="(recetasFav$ | async)?.length; else sinResultados">
+      <div *ngFor="let receta of recetasFav$ | async" class="card">
+        <img [src]="receta.imagen" [alt]="receta.titulo" [title]="receta.titulo" class="card-img" />
+        <h3 class="card-title">{{ receta.titulo }}</h3>
+        <p class="card-desc">{{ receta.descripcion }}</p>
+        <div class="card-buttons">
+          <ion-button expand="block" (click)="verDetalle(receta.id)">
+            <ion-icon name="arrow-forward" slot="start"></ion-icon>
+            Ver Detalle
+          </ion-button>
           <ion-button color="danger" expand="block" (click)="eliminarFavorito(receta.id)">
-            Eliminar
+            <ion-icon name="trash" slot="start"></ion-icon>
+            Quitar
           </ion-button>
         </div>
       </div>
-    </div>
-
-    <ng-template #noFavoritos>
-      <p class="detalle-descripcion">Aún no tienes recetas en tu biblioteca 😢</p>
+    </ng-container>
+    <ng-template #sinResultados>
+      <div class="sin-resultados">
+        <ion-icon name="search-outline"></ion-icon>
+        <p>No se encontraron recetas 🍳</p>
+      </div>
     </ng-template>
   </div>
+
+  <nav class="bottom-nav">
+    <button (click)="router.navigate(['/home'])">🏠 Home</button>
+    <button (click)="router.navigate(['/library'])">📚 Biblioteca</button>
+    <button (click)="router.navigate(['/profile'])">👤 Perfil</button>
+  </nav>
 </ion-content>
